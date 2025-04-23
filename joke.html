@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joke Generator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #3e4e5e;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p.joke {
+      font-size: 1.2em;
+      color: #4a5568;
+      margin: 20px 0;
+      min-height: 60px;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #2563eb;
+      transform: scale(1.1);
+    }
+    button:active {
+      transform: scale(1);
+    }
+    .joke-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-link {
+      font-size: 1.1em;
+      color: #3b82f6;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+    .back-link:hover {
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-link">Back to Home Page</a>
+
+  <div class="container">
+    <h1>Random Joke Generator</h1>
+    <div class="joke-container">
+      <p class="joke">Click the button for a joke!</p>
+      <button id="generateJoke">Get a New Joke</button>
+    </div>
+  </div>
+
+  <script>
+    const jokes = [
+      "Why don't skeletons fight each other? They don't have the guts!",
+      "Why don't eggs tell jokes? They might crack up!",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "I asked my dog what's two minus two. He said nothing.",
+      "I'm reading a book about anti-gravity. It's impossible to put down!",
+      "I told my computer I needed a break, and now it won't stop sending me Kit-Kats.",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!"
+    ];
+
+    const jokeElement = document.querySelector('.joke');
+    const button = document.getElementById('generateJoke');
+
+    function generateRandomJoke() {
+      const randomIndex = Math.floor(Math.random() * jokes.length);
+      jokeElement.textContent = jokes[randomIndex];
+    }
+
+    button.addEventListener('click', () => {
+      jokeElement.classList.add('fade-out');
+      setTimeout(() => {
+        generateRandomJoke();
+        jokeElement.classList.remove('fade-out');
+      }, 500);
+    });
+
+    generateRandomJoke();
+  </script>
+
+</body>
+</html>
